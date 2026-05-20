@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
+  <!-- Home -->
   <url>
     <loc>https://www.portcoquitlamgaragedoors.ca/</loc>
     <lastmod>2026-05-19</lastmod>
@@ -15,30 +16,150 @@
       <image:loc>https://www.portcoquitlamgaragedoors.ca/images/logo.png</image:loc>
       <image:title>POCO Garage Doors Logo</image:title>
     </image:image>
+  </url>
+
+  <!-- Core residential services -->
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/spring-repair/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
     <image:image>
       <image:loc>https://www.portcoquitlamgaragedoors.ca/images/home-spring-repair.jpg</image:loc>
       <image:title>Garage door spring repair in the Tri-Cities</image:title>
     </image:image>
+  </url>
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/garage-door-openers/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
     <image:image>
       <image:loc>https://www.portcoquitlamgaragedoors.ca/images/home-opener-upgrade.jpg</image:loc>
-      <image:title>Garage door opener installation and upgrade</image:title>
+      <image:title>LiftMaster garage door opener installation</image:title>
     </image:image>
-    <image:image>
-      <image:loc>https://www.portcoquitlamgaragedoors.ca/images/home-inspection.jpg</image:loc>
-      <image:title>Garage door inspection and maintenance</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.portcoquitlamgaragedoors.ca/images/services-warehouse-bg.jpg</image:loc>
-      <image:title>Commercial warehouse garage doors</image:title>
-    </image:image>
+  </url>
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/new-garage-doors/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/garage-door-not-opening/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/garage-door-wont-close/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Commercial services -->
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/commercial-openers/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/strata/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
       <image:loc>https://www.portcoquitlamgaragedoors.ca/images/strata-commercial-gate.jpg</image:loc>
-      <image:title>Strata and commercial gate service</image:title>
+      <image:title>Strata garage door and gate service</image:title>
     </image:image>
+  </url>
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/warehouse-doors/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
     <image:image>
-      <image:loc>https://www.portcoquitlamgaragedoors.ca/images/townhome-builders.jpg</image:loc>
-      <image:title>Townhome and builder garage door programs</image:title>
+      <image:loc>https://www.portcoquitlamgaragedoors.ca/images/services-warehouse-bg.jpg</image:loc>
+      <image:title>Warehouse garage doors</image:title>
     </image:image>
+  </url>
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/commercial-overhead-doors/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/maintenance/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.portcoquitlamgaragedoors.ca/images/home-inspection.jpg</image:loc>
+      <image:title>Garage door maintenance program</image:title>
+    </image:image>
+  </url>
+
+  <!-- Gate services -->
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/gate-remote-programming/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/gate-service/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Service areas -->
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/coquitlam/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/port-coquitlam/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/port-moody/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Company pages -->
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/about/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/faq/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/contact/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portcoquitlamgaragedoors.ca/privacy/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 
 </urlset>

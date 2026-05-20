@@ -110,11 +110,29 @@ FileETag None
 </IfModule>
 
 # ------------------------------------------------------------
-# 6. PRETTY URLS (optional — strip .html from URLs)
+# 6. PRETTY URLS
 # ------------------------------------------------------------
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  # If .html version exists, serve it without the extension
+
+  # Strip /index.html from any URL so canonical = directory URL
+  # e.g. /spring-repair/index.html -> /spring-repair/
+  RewriteCond %{THE_REQUEST} \s/+(.*?)index\.html[\s?] [NC]
+  RewriteRule ^ /%1 [L,R=301]
+
+  # Add trailing slash to directory URLs
+  # e.g. /spring-repair -> /spring-repair/
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.*)$ /$1/ [L,R=301]
+
+  # 301 legacy hash anchors from the old single-page app to their new URLs.
+  # These only work for clients that follow Refresh meta (not browsers that
+  # never send the hash to the server), but they help when the hash is
+  # accidentally exposed in copy/paste/scraped links. The bulk of legacy
+  # hash handling is done client-side in scripts.js on the home page.
+
+  # If a .html version exists at the requested path, serve it without the extension
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.+?)/?$ $1.html [L]
