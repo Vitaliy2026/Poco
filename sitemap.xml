@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
   <url>
     <loc>https://www.portcoquitlamgaragedoors.ca/</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -12,7 +13,32 @@
     </image:image>
     <image:image>
       <image:loc>https://www.portcoquitlamgaragedoors.ca/images/logo.png</image:loc>
-      <image:title>Port Coquitlam Garage Doors Logo</image:title>
+      <image:title>POCO Garage Doors Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.portcoquitlamgaragedoors.ca/images/home-spring-repair.jpg</image:loc>
+      <image:title>Garage door spring repair in the Tri-Cities</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.portcoquitlamgaragedoors.ca/images/home-opener-upgrade.jpg</image:loc>
+      <image:title>Garage door opener installation and upgrade</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.portcoquitlamgaragedoors.ca/images/home-inspection.jpg</image:loc>
+      <image:title>Garage door inspection and maintenance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.portcoquitlamgaragedoors.ca/images/services-warehouse-bg.jpg</image:loc>
+      <image:title>Commercial warehouse garage doors</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.portcoquitlamgaragedoors.ca/images/strata-commercial-gate.jpg</image:loc>
+      <image:title>Strata and commercial gate service</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.portcoquitlamgaragedoors.ca/images/townhome-builders.jpg</image:loc>
+      <image:title>Townhome and builder garage door programs</image:title>
     </image:image>
   </url>
+
 </urlset>
