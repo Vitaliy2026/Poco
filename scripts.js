@@ -86,3 +86,62 @@ document.addEventListener('click', e => {
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
 window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMobileMenu(); });
+
+// ─── Contact form: AJAX submit with loading / success / error UX ───
+// Falls back to call/text/email CTAs if the form service is unreachable
+// (e.g. when FormSubmit.co is having a Cloudflare 522 outage).
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('form.poco-form').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      let status = form.querySelector('.poco-form-status');
+      if (!status) {
+        status = document.createElement('div');
+        status.className = 'poco-form-status';
+        form.appendChild(status);
+      }
+      const originalBtn = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = 'Sending…';
+      status.className = 'poco-form-status loading';
+      status.innerHTML = 'Sending your message…';
+
+      // Use FormSubmit's AJAX endpoint when the form action targets formsubmit.co
+      let url = form.getAttribute('action') || '';
+      if (url.includes('formsubmit.co') && !url.includes('/ajax/')) {
+        url = url.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+      }
+      const data = Object.fromEntries(new FormData(form));
+
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 12000);
+
+      try {
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data),
+          signal: ctrl.signal,
+        });
+        clearTimeout(timer);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        status.className = 'poco-form-status success';
+        status.innerHTML = "✓ Thanks! Your message is on its way. We'll be in touch within a few hours.";
+        form.reset();
+        btn.innerHTML = '✓ Sent';
+        // Re-enable after a moment so users can submit a follow-up if needed
+        setTimeout(() => { btn.disabled = false; btn.innerHTML = originalBtn; }, 4000);
+      } catch (err) {
+        clearTimeout(timer);
+        status.className = 'poco-form-status error';
+        status.innerHTML = '<strong>The form service is temporarily unavailable.</strong> Please reach us directly: '
+          + '<a href="tel:7788310239">📞 Call 778-831-0239</a> · '
+          + '<a href="sms:7788310239?&body=Hi%2C%20I%20need%20garage%20door%20service.">💬 Text</a> · '
+          + '<a href="mailto:info@portcoquitlamgaragedoors.ca?subject=Website%20Inquiry">✉️ Email</a>';
+        btn.disabled = false;
+        btn.innerHTML = originalBtn;
+      }
+    });
+  });
+});
