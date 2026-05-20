@@ -22,10 +22,14 @@ ServerSignature Off
   RewriteCond %{HTTP_HOST} ^portcoquitlamgaragedoors\.ca$ [NC]
   RewriteRule ^(.*)$ https://www.portcoquitlamgaragedoors.ca/$1 [L,R=301]
 
-  # 301 legacy area URLs (renamed for SEO keyword targeting)
+  # 301 legacy URLs (renamed for SEO keyword targeting)
   RedirectMatch 301 ^/coquitlam/?$ /garage-door-repair-coquitlam/
   RedirectMatch 301 ^/port-coquitlam/?$ /garage-door-repair-port-coquitlam/
   RedirectMatch 301 ^/port-moody/?$ /garage-door-repair-port-moody/
+  RedirectMatch 301 ^/spring-repair/?$ /garage-door-spring-repair/
+  RedirectMatch 301 ^/commercial-openers/?$ /commercial-garage-door-openers/
+  RedirectMatch 301 ^/warehouse-doors/?$ /warehouse-overhead-doors/
+  RedirectMatch 301 ^/maintenance/?$ /scheduled-garage-door-maintenance/
 </IfModule>
 
 # ------------------------------------------------------------
