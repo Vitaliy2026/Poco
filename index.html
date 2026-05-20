@@ -2079,6 +2079,50 @@ p.lead { font-size: 1.08rem; line-height: 1.7; color: #2a2a2a; margin-bottom: 16
   .co-card { padding: 18px; }
 }
 
+/* ─── MOBILE OPTIMIZATION + RESPONSIVE FIXES ─── */
+/* Prevent any element from causing horizontal page scroll on mobile */
+html, body { overflow-x: hidden; max-width: 100%; }
+img, video, iframe, svg { max-width: 100%; height: auto; }
+.page table { display: block; overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; }
+
+/* Lock body scroll while mobile nav drawer is open */
+body.nav-open { overflow: hidden; }
+
+/* Tap-to-dismiss overlay behind the mobile nav drawer */
+.nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 997; }
+@media (max-width: 900px) { body.nav-open .nav-backdrop { display: block; } }
+
+/* hood-grid (used on strata page) had no CSS definition */
+.hood-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 28px; }
+@media (max-width: 900px) { .hood-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .hood-grid { grid-template-columns: 1fr; } }
+
+/* Override inline transform on overhead-page image that breaks scaling on small screens */
+@media (max-width: 900px) {
+  .oh-split-img[style*="scale"] { transform: none !important; }
+  .oh-split-img[style*="min-height"] { min-height: 240px !important; max-height: none !important; aspect-ratio: 16/10; }
+}
+
+/* .comm-card icon+text layout never stacked on mobile */
+@media (max-width: 600px) {
+  .comm-card { grid-template-columns: 1fr; gap: 12px; padding: 22px; }
+}
+
+/* .area-stats: collapse 4→2 cols already exists at 768; add single-col for very small phones */
+@media (max-width: 380px) {
+  .area-stats { grid-template-columns: 1fr; }
+}
+
+/* Min tap target for all anchors/buttons on touch devices */
+@media (max-width: 900px) {
+  a, button, input[type="submit"], .btn-primary, .btn-outline { min-height: 44px; }
+  /* But don't force min-height on inline links inside paragraphs */
+  p a, li a, .content-inner a { min-height: 0; }
+}
+
+/* Prevent form controls from overflowing their column on mobile */
+input, select, textarea { max-width: 100%; box-sizing: border-box; }
+
 </style>
 </head>
 <body>
@@ -2142,11 +2186,12 @@ p.lead { font-size: 1.08rem; line-height: 1.7; color: #2a2a2a; margin-bottom: 16
       <li><a href="#" onclick="showPage('faq')">FAQ</a></li>
       <li><a href="#" onclick="showPage('contact')" class="nav-cta">Contact Us</a></li>
     </ul>
-    <div class="nav-hamburger" onclick="toggleMenu()" id="hamburger">
+    <div class="nav-hamburger" onclick="toggleMenu()" id="hamburger" role="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
       <span></span><span></span><span></span>
     </div>
   </div>
 </nav>
+<div class="nav-backdrop" id="navBackdrop" onclick="closeMobileMenu()"></div>
 
 <!-- ════════════════════════════════════════
      HOME PAGE
@@ -5796,6 +5841,8 @@ function showPage(id) {
   document.querySelectorAll('.nav-menu > li > a').forEach(a => a.classList.remove('active'));
   const navMap = { home:'nav-home' };
   if(navMap[id]) document.getElementById(navMap[id])?.classList.add('active');
+  // Always close the mobile drawer after navigation, regardless of where the link lives
+  closeMobileMenu();
 }
 
 function toggleFaq(btn) {
@@ -5805,14 +5852,29 @@ function toggleFaq(btn) {
   if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
 }
 
-function toggleMenu() {
+function setMobileMenu(open) {
   const menu = document.getElementById('navMenu');
   const ham = document.getElementById('hamburger');
-  menu.classList.toggle('open');
-  ham.classList.toggle('open');
+  if (!menu || !ham) return;
+  menu.classList.toggle('open', open);
+  ham.classList.toggle('open', open);
+  document.body.classList.toggle('nav-open', open);
+  ham.setAttribute('aria-expanded', open ? 'true' : 'false');
+  ham.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  if (!open) {
+    document.querySelectorAll('.nav-menu > li.expanded').forEach(li => li.classList.remove('expanded'));
+  }
 }
 
-// Mobile dropdown &#8212; tap parent to expand instead of hover
+function toggleMenu() {
+  const menu = document.getElementById('navMenu');
+  if (!menu) return;
+  setMobileMenu(!menu.classList.contains('open'));
+}
+
+function closeMobileMenu() { setMobileMenu(false); }
+
+// Mobile dropdown — tap parent to expand instead of hover-only
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.nav-menu > li').forEach(li => {
     const sub = li.querySelector('.dropdown');
@@ -5828,24 +5890,24 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-  // Close mobile menu when a sub-link is tapped
-  document.querySelectorAll('.dropdown a, .nav-cta').forEach(a => {
-    a.addEventListener('click', () => {
-      if (window.matchMedia('(max-width: 900px)').matches) {
-        document.getElementById('navMenu')?.classList.remove('open');
-        document.getElementById('hamburger')?.classList.remove('open');
-        document.querySelectorAll('.nav-menu > li.expanded').forEach(li => li.classList.remove('expanded'));
-      }
-    });
-  });
 });
 
-// Close dropdowns on page click
+// Close mobile menu when tapping outside <nav> (overlay/backdrop click is handled inline)
 document.addEventListener('click', e => {
-  if(!e.target.closest('nav')) {
-    const menu = document.getElementById('navMenu');
-    if(window.innerWidth <= 768) menu.style.display = 'none';
-  }
+  const menu = document.getElementById('navMenu');
+  if (!menu || !menu.classList.contains('open')) return;
+  if (e.target.closest('nav') || e.target.closest('#navBackdrop') || e.target.closest('#hamburger')) return;
+  closeMobileMenu();
+});
+
+// ESC closes the drawer
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeMobileMenu();
+});
+
+// If the viewport grows past the mobile breakpoint, reset drawer state so desktop nav works
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900) closeMobileMenu();
 });
 </script>
 </body>
