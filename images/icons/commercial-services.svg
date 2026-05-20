@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Commercial services">
+  <title>Commercial services</title>
+  <path d="M2 9l10-5 10 5"></path>
+  <path d="M3 9v12h18V9"></path>
+  <rect x="5" y="13" width="4" height="8"></rect>
+  <path d="M5 15h4"></path>
+  <path d="M5 17h4"></path>
+  <path d="M5 19h4"></path>
+  <rect x="10" y="13" width="4" height="8"></rect>
+  <path d="M10 15h4"></path>
+  <path d="M10 17h4"></path>
+  <path d="M10 19h4"></path>
+  <rect x="15" y="13" width="4" height="8"></rect>
+  <path d="M15 15h4"></path>
+  <path d="M15 17h4"></path>
+  <path d="M15 19h4"></path>
+</svg>

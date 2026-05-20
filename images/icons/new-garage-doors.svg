@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="New garage doors">
+  <title>New garage doors</title>
+  <rect x="3" y="3" width="18" height="18" rx="1"></rect>
+  <path d="M3 8h18"></path>
+  <path d="M3 12h18"></path>
+  <path d="M3 16h18"></path>
+  <circle cx="12" cy="14" r="0.6" fill="currentColor" stroke="none"></circle>
+</svg>

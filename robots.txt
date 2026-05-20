@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+Disallow: /brochures/
+
+# AI / AEO crawlers — explicit allow
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.portcoquitlamgaragedoors.ca/sitemap.xml
