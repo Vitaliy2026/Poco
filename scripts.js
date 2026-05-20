@@ -126,9 +126,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         clearTimeout(timer);
         if (!res.ok) throw new Error('HTTP ' + res.status);
+        // Web3Forms returns 200 with { success: false } on bad access key, etc.
+        let json = null;
+        try { json = await res.json(); } catch (_) { /* not JSON — assume success */ }
+        if (json && json.success === false) throw new Error(json.message || 'Submission rejected');
         status.className = 'poco-form-status success';
         status.innerHTML = "✓ Thanks! Your message is on its way. We'll be in touch within a few hours.";
         form.reset();
+        // Restore the hidden botcheck after reset() unchecks it (it stays unchecked, this is just defensive)
         btn.innerHTML = '✓ Sent';
         // Re-enable after a moment so users can submit a follow-up if needed
         setTimeout(() => { btn.disabled = false; btn.innerHTML = originalBtn; }, 4000);
