@@ -5,9 +5,12 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1E1E1E",
-  "theme_color": "#FF4D6D",
+  "theme_color": "#C0181A",
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    { "src": "/favicon-96.png?v=2",       "sizes": "96x96",   "type": "image/png" },
+    { "src": "/icon-192.png?v=2",         "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png?v=2",         "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-192.png?v=2",         "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icon-512.png?v=2",         "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }
