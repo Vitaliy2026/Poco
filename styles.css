@@ -512,7 +512,7 @@ section { padding: 80px 24px; }
 .inner-hero--portmoody { background-image: url('images/portmoody/hero-portmoody.jpg'); background-position: center 55%; }
 .inner-hero--portmoody::before { background: linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.5) 50%, rgba(0,0,0,.25) 100%); }
 @media (max-width: 768px) { .inner-hero--portmoody::before { background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.6) 100%); } }
-.inner-hero--coquitlam { background-image: url('images/coquitlam/hero-coquitlam.jpg'); background-position: center 55%; }
+.inner-hero--coquitlam { background-image: url('/images/garage-door-repair-coquitlam/hero-coquitlam.jpg'); background-position: center 55%; }
 .inner-hero--coquitlam::before { background: linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.5) 50%, rgba(0,0,0,.25) 100%); }
 @media (max-width: 768px) { .inner-hero--coquitlam::before { background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.6) 100%); } }
 .inner-hero--notclosing { background-image: url('images/notclosing/door-stuck-open.jpg'); background-position: center 50%; }
