@@ -87,6 +87,30 @@ document.addEventListener('click', e => {
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
 window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMobileMenu(); });
 
+// ─── Google Ads conversion tracking ───
+// Fires on every phone (tel:) and SMS (sms:) click across all pages.
+// Conversion: AW-18184587953/Z9YbCKTClbUcELGVi99D (Click to call)
+function gadsConversion(url) {
+  if (typeof gtag !== 'function') {
+    if (url) window.location = url;
+    return false;
+  }
+  gtag('event', 'conversion', {
+    send_to: 'AW-18184587953/Z9YbCKTClbUcELGVi99D',
+    value: 1.0,
+    currency: 'CAD',
+    event_callback: function () { if (url) window.location = url; }
+  });
+  return false;
+}
+
+document.addEventListener('click', e => {
+  const link = e.target.closest('a[href^="tel:"], a[href^="sms:"]');
+  if (!link) return;
+  e.preventDefault();
+  gadsConversion(link.href);
+});
+
 // ─── Contact form: AJAX submit with loading / success / error UX ───
 // Falls back to call/text/email CTAs if the form service is unreachable
 // (e.g. when FormSubmit.co is having a Cloudflare 522 outage).
